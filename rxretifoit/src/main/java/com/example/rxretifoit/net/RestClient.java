@@ -170,6 +170,9 @@ public class RestClient {
     }
 
     public final void download(){
+        if (LOADER_STYLE != null) {
+            LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
+        }
         new DownloadHandler(URL,REQUEST,SUCCESS,FAILURE,ERROR,DOWLOAD_DIR,EXTENSION,NAME)
                 .handleDownload();
     }

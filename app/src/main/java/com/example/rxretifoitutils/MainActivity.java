@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        donwolad();
     }
     private void dowolad() {
         RestUrlInfo.setURL("http://xxx.xxx.xx.xxx/");
@@ -103,6 +104,17 @@ public class MainActivity extends AppCompatActivity{
                 // 如果用户不是点击了拒绝就跳转到系统设置页
             }
         }
+    }
+    private void donwolad(){
+        RestUrlInfo.setURL("http://101.132.64.249/");
+        RestClient.builder()
+                .loader(this)
+                .url("1.exe")
+                .success(response -> Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show())
+                .error((code, msg) -> Log.e("demo", msg))
+                .name("T1.exe")
+                .build()
+                .download();
     }
 
 }
