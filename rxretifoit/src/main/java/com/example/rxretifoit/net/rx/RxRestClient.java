@@ -129,6 +129,9 @@ public class RxRestClient {
     }
 
     public final Observable<ResponseBody> download() {
+        if (LOADER_STYLE != null) {
+            LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
+        }
         final Observable<ResponseBody> responseBodyObservable = RestCreator.getRxRestService().download(URL, PARAMS);
         return responseBodyObservable;
     }

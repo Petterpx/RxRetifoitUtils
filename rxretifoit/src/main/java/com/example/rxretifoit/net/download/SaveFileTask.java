@@ -17,13 +17,16 @@ import okhttp3.ResponseBody;
 public class SaveFileTask extends AsyncTask<Object,Void, File> {
 
     //请求回调
-    private  final IRequest REQUEST;
+    private   IRequest REQUEST;
     //成功的回调
-    private  final ISuccess SUCCESS;
+    private   ISuccess SUCCESS;
 
-    public SaveFileTask(IRequest REQUEST, ISuccess SUCCESS) {
-        this.REQUEST = REQUEST;
-        this.SUCCESS = SUCCESS;
+    public SaveFileTask(IRequest request, ISuccess success) {
+        this.REQUEST = request;
+        this.SUCCESS = success;
+    }
+    public SaveFileTask(ISuccess success){
+        this.SUCCESS=success;
     }
 
     /**
@@ -62,7 +65,7 @@ public class SaveFileTask extends AsyncTask<Object,Void, File> {
     }
 
     /**
-     * 执行完异步回到主线程的操作  通过从方法进行更新ui的操作
+     * 执行完异步回到主线程的操作  通过此方法进行更新ui的操作
      * @param file
      */
     @Override
